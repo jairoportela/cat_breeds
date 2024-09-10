@@ -12,21 +12,28 @@ class CatBreedDetail extends StatelessWidget {
       appBar: AppBar(
         title: Text(breed.name),
       ),
-      body: Column(
-        children: [
-          if (breed.imageId != null && breed.imageUrl != null)
-            Hero(
-              tag: breed.imageId!,
-              child: Image.network(
-                breed.imageUrl!,
+      body: LayoutBuilder(builder: (context, constraints) {
+        final imageHeight = constraints.maxHeight / 2;
+
+        return Column(
+          children: [
+            if (breed.imageId != null && breed.imageUrl != null)
+              Hero(
+                tag: breed.imageId!,
+                child: Image.network(
+                  breed.imageUrl!,
+                  height: imageHeight,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            Expanded(
+              child: CatBreedDetailInfo.fromBreed(
+                breed: breed,
               ),
             ),
-          Expanded(
-              child: CatBreedDatailInfo(
-            breed: breed,
-          )),
-        ],
-      ),
+          ],
+        );
+      }),
     );
   }
 }

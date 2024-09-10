@@ -20,19 +20,20 @@ class _SearchCatBreedState extends State<SearchCatBreed> {
   Widget build(BuildContext context) {
     return BlocListener<CatBreedsOverviewBloc, CatBreedsOverviewState>(
       listener: (context, state) {
-        if (_controller.text.isNotEmpty) {
-          _controller.clear();
-        }
+        _controller.clear();
       },
-      listenWhen: (previous, current) => current.search?.isEmpty == true,
+      listenWhen: (previous, current) =>
+          previous.status == CatBreedsOverviewStatus.notFoundItems &&
+          current.status == CatBreedsOverviewStatus.loading,
       child: TextField(
         controller: _controller,
         decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.search),
-          filled: true,
-          fillColor: Colors.blueGrey.shade100,
+          prefixIcon: const Icon(
+            Icons.search,
+          ),
+          hintText: 'Search by breed',
           border: OutlineInputBorder(
-            borderSide: BorderSide.none,
+            borderSide: const BorderSide(),
             borderRadius: BorderRadius.circular(10),
           ),
         ),

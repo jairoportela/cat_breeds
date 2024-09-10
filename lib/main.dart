@@ -18,7 +18,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Cat breeds',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromRGBO(48, 89, 120, 1),
+        ),
         useMaterial3: true,
       ),
       home: const CatBreedsOverviewProvider(),
