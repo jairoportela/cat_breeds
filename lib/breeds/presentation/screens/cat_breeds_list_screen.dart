@@ -1,7 +1,9 @@
-import 'package:cat_breeds/breeds/data/models/cat_breed.dart';
 import 'package:cat_breeds/breeds/presentation/widgets/cat_breeds_list_view.dart';
+import 'package:cat_breeds/breeds/presentation/widgets/error_list_widget.dart';
+import 'package:cat_breeds/breeds/presentation/widgets/search_cat_breed.dart';
+import 'package:cat_breeds/breeds/providers/bloc/cat_breeds_overview_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:the_cat_api/the_cat_api.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CatBreedsListScreen extends StatelessWidget {
   const CatBreedsListScreen({
@@ -11,19 +13,42 @@ class CatBreedsListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(
-        future: TheCatApi.build().getCatBreeds(),
-        builder: (ctx, snapshot) {
-          if (snapshot.hasData) {
-            final data = snapshot.data!
-                .map(
-                  (e) => CatBreedModel.fromRepository(e),
-                )
-                .toList();
-            return Scaffold(body: CatBreedsListView(data: data));
-          } else {
-            return const CircularProgressIndicator.adaptive();
-          }
+      appBar: AppBar(
+        toolbarHeight: 80,
+        title: SearchCatBreed(
+          onChanged: (value) {
+            context.read<CatBreedsOverviewBloc>().add(
+                  CatBreedsGetData(value),
+                );
+          },
+        ),
+      ),
+      body: BlocBuilder<CatBreedsOverviewBloc, CatBreedsOverviewState>(
+        builder: (context, state) {
+          final status = state.status;
+          return switch (status) {
+            CatBreedsOverviewStatus.initial ||
+            CatBreedsOverviewStatus.loading =>
+              const Center(child: CircularProgressIndicator.adaptive()),
+            CatBreedsOverviewStatus.success =>
+              CatBreedsListView(data: state.items),
+            CatBreedsOverviewStatus.notFoundItems => ErrorListWidget(
+                onPressed: () {
+                  context
+                      .read<CatBreedsOverviewBloc>()
+                      .add(const CatBreedsGetData(''));
+                },
+                message: state.message ?? '',
+              ),
+            CatBreedsOverviewStatus.failure => ErrorListWidget(
+                onPressed: () {
+                  context
+                      .read<CatBreedsOverviewBloc>()
+                      .add(const CatBreedsGetData());
+                },
+                message: state.message ?? '',
+              ),
+          };
         },
       ),
     );

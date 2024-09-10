@@ -13,6 +13,7 @@ class CatBreedsListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
       itemCount: data.length,
       itemBuilder: (context, index) {
         final item = data.elementAt(index);

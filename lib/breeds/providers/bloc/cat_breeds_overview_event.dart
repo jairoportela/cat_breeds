@@ -8,7 +8,7 @@ sealed class CatBreedsOverviewEvent extends Equatable {
 }
 
 final class CatBreedsGetData extends CatBreedsOverviewEvent {
-  const CatBreedsGetData({required this.search});
+  const CatBreedsGetData([this.search]);
 
   final String? search;
 
