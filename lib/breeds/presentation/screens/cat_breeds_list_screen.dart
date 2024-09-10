@@ -5,7 +5,9 @@ import 'package:cat_breeds/breeds/providers/bloc/cat_breeds_overview_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+/// Construct a the cat breeds screen with a list view and a search bar
 class CatBreedsListScreen extends StatelessWidget {
+  /// Constructs a `CatBreedsListScreen` instance.
   const CatBreedsListScreen({
     super.key,
   });

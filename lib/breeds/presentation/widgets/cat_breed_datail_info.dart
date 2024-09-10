@@ -1,15 +1,19 @@
-import 'package:flutter/material.dart';
 import 'package:cat_breeds/breeds/data/models/cat_breed.dart';
+import 'package:flutter/material.dart';
 
+///Scroll detail info for a cat breed
 class CatBreedDetailInfo extends StatefulWidget {
+  /// Constructs a `CatBreedDetailInfo` instance.
   const CatBreedDetailInfo({
-    super.key,
     required this.country,
     required this.intelligence,
     required this.adaptability,
     required this.description,
     required this.lifespan,
+    super.key,
   });
+
+  /// Constructs a `CatBreedDetailInfo` instance from a [breed].
   factory CatBreedDetailInfo.fromBreed({required CatBreedModel breed}) {
     final CatBreedModel(
       :adaptability,
@@ -27,10 +31,19 @@ class CatBreedDetailInfo extends StatefulWidget {
     );
   }
 
+  /// The name of the country where the cat breed originated.
   final String country;
+
+  /// The intelligence level of the cat breed.
   final int intelligence;
+
+  /// The adaptability level of the cat breed.
   final int adaptability;
+
+  ///Descrip
   final String description;
+
+  /// The life span of the cat breed (optional).
   final String? lifespan;
   @override
   State<CatBreedDetailInfo> createState() => _CatBreedDetailInfoState();
@@ -88,7 +101,8 @@ class _CatBreedDetailInfoState extends State<CatBreedDetailInfo> {
             Row(
               children: [
                 const Icon(
-                    Icons.favorite_border), // You can choose a suitable icon
+                  Icons.favorite_border,
+                ), // You can choose a suitable icon
                 const SizedBox(width: 5),
                 Text('Lifespan: ${widget.lifespan}'),
               ],

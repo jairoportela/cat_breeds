@@ -1,0 +1,22 @@
+name: cat_breeds
+
+packages:
+  - /*
+  - packages/**
+scripts:
+  build:android-apk:
+    run: flutter build apk --dart-define-from-file=api_keys.json
+  build:android-bundle:
+    run: flutter build appbundle --dart-define-from-file=api_keys.json
+  build:ios:
+    run: flutter build ipa --dart-define-from-file=api_keys.json
+  build_runner:
+    run: dart run build_runner build
+    exec:
+      concurrency: 1
+    packageFilters:
+      scope: "*api*"
+command:
+  bootstrap:
+    hooks:
+      post: melos run build_runner
