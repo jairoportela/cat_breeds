@@ -1,3 +1,4 @@
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:cat_breeds_repository/cat_breeds_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cat_breeds/breeds/data/models/cat_breed.dart';
@@ -7,8 +8,10 @@ import 'package:rxdart/rxdart.dart';
 part 'cat_breeds_overview_event.dart';
 part 'cat_breeds_overview_state.dart';
 
-EventTransformer<Event> debounceSequential<Event>(Duration duration) {
-  return (events, mapper) => events.debounceTime(duration).asyncExpand(mapper);
+EventTransformer<CatBreedsOverviewEvent>
+    debounceDroppable<CatBreedsOverviewEvent>(Duration duration) {
+  return (events, mapper) => droppable<CatBreedsOverviewEvent>()
+      .call(events.debounceTime(duration), mapper);
 }
 
 class CatBreedsOverviewBloc
@@ -17,7 +20,7 @@ class CatBreedsOverviewBloc
       : super(const CatBreedsOverviewState()) {
     on<CatBreedsGetData>(
       _getData,
-      transformer: debounceSequential(
+      transformer: debounceDroppable(
         const Duration(milliseconds: 300),
       ),
     );
