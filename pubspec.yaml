@@ -14,9 +14,12 @@ dependencies:
     sdk: flutter
   the_cat_api:
     path: packages/the_cat_api
+  cat_breeds_repository:
+    path: packages/cat_breeds_repository
   cupertino_icons: ^1.0.8
   flutter_bloc: ^8.1.6
   equatable: ^2.0.5
+  rxdart: ^0.28.0
 
 dev_dependencies:
   flutter_test:

@@ -13,7 +13,7 @@ class CatBreedsRepository {
   ///Get cat breeds with `search` optional
   Future<List<CatBreed>> getCatBreeds(String? search) async {
     try {
-      final query = search != null
+      final query = search != null && search.isNotEmpty
           ? _api.getCatBreedsBySearch(search)
           : _api.getCatBreeds();
       final result = await query;
