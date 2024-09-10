@@ -8,21 +8,21 @@
       "name": "cat_breeds (debug)",
       "request": "launch",
       "type": "dart",
-      "args": ["--dart-define-from-file", "api-keys.json"]
+      "args": ["--dart-define-from-file", "api_keys.json"]
     },
     {
       "name": "cat_breeds (profile mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile",
-      "args": ["--dart-define-from-file", "api-keys.json"]
+      "args": ["--dart-define-from-file", "api_keys.json"]
     },
     {
       "name": "cat_breeds (release mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "release",
-      "args": ["--dart-define-from-file", "api-keys.json"]
+      "args": ["--dart-define-from-file", "api_keys.json"]
     }
   ]
 }
