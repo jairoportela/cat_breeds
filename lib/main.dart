@@ -9,7 +9,9 @@ void main() {
   runApp(const MyApp());
 }
 
+///APP initializer
 class MyApp extends StatelessWidget {
+  /// Constructs a `MyApp` instance.
   const MyApp({super.key});
 
   // This widget is the root of your application.
@@ -28,7 +30,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
+///A flutter bloc provider for the bloc [CatBreedsOverviewBloc]
 class CatBreedsOverviewProvider extends StatefulWidget {
+  /// Constructs a `CatBreedsOverviewProvider` instance.
   const CatBreedsOverviewProvider({
     super.key,
   });

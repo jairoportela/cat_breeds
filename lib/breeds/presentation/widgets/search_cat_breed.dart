@@ -2,11 +2,15 @@ import 'package:cat_breeds/breeds/providers/bloc/cat_breeds_overview_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+///A flutter search widget to search cat breeds
 class SearchCatBreed extends StatefulWidget {
+  /// Constructs a `SearchCatBreed` instance.
   const SearchCatBreed({
     super.key,
     this.onChanged,
   });
+
+  ///Action when a value change in the search text field
   final ValueChanged<String>? onChanged;
 
   @override
@@ -33,7 +37,6 @@ class _SearchCatBreedState extends State<SearchCatBreed> {
           ),
           hintText: 'Search by breed',
           border: OutlineInputBorder(
-            borderSide: const BorderSide(),
             borderRadius: BorderRadius.circular(10),
           ),
         ),

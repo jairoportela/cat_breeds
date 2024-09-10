@@ -1,20 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:the_cat_api/the_cat_api.dart';
 
+/// Represents a model for cat breed information.
+
 class CatBreedModel extends Equatable {
-  final String id;
-  final String name;
-  final String countryName;
-  final int? intelligence;
-  final int? adaptability;
-  final String? lifeSpan;
-  final String? imageUrl;
-  final String? imageId;
-  final String description;
-
-  bool get imageIsNotEmpty =>
-      imageUrl != null && imageUrl?.isNotEmpty == true && imageId != null;
-
+  /// Constructs a `CatBreedModel` instance.
+  ///
+  /// All parameters are required.
   const CatBreedModel({
     required this.id,
     required this.name,
@@ -27,6 +19,7 @@ class CatBreedModel extends Equatable {
     required this.description,
   });
 
+  /// Creates a `CatBreedModel` instance from a `CatBreed` object
   factory CatBreedModel.fromRepository(CatBreed catBreed) {
     return CatBreedModel(
       id: catBreed.id,
@@ -41,6 +34,40 @@ class CatBreedModel extends Equatable {
     );
   }
 
+  /// The unique identifier for the cat breed.
+  final String id;
+
+  /// The name of the cat breed.
+  final String name;
+
+  /// The name of the country where the cat breed originated.
+  final String countryName;
+
+  /// The intelligence level of the cat breed (optional).
+  final int? intelligence;
+
+  /// The adaptability level of the cat breed (optional).
+  final int? adaptability;
+
+  /// The life span of the cat breed (optional).
+  final String? lifeSpan;
+
+  /// The URL of an image representing the cat breed (optional).
+  final String? imageUrl;
+
+  /// The unique identifier for the image (optional).
+  final String? imageId;
+
+  /// A description of the cat breed.
+  final String description;
+
+  /// Checks if both the `imageUrl` and `imageId` are not null and `imageUrl`
+  /// is not empty.
+  bool get imageIsNotEmpty =>
+      imageUrl != null && (imageUrl?.isNotEmpty ?? false) && imageId != null;
+
+  /// Overrides the `props` getter from `Equatable` to define the properties
+  /// used for equality comparison.
   @override
   List<Object?> get props => [
         id,

@@ -2,12 +2,15 @@ import 'package:cat_breeds/breeds/data/models/cat_breed.dart';
 import 'package:cat_breeds/breeds/presentation/screens/cat_breeds_detail_screen.dart';
 import 'package:flutter/material.dart';
 
+///A flutter list view of the cat breeds data
 class CatBreedsListView extends StatelessWidget {
+  /// A constructor of the CatBreedsListView
   const CatBreedsListView({
-    super.key,
     required this.data,
+    super.key,
   });
 
+  ///List of cat breed data
   final List<CatBreedModel> data;
 
   @override
@@ -24,8 +27,11 @@ class CatBreedsListView extends StatelessWidget {
           child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (ctx) => CatBreedDetail(breed: item)));
+              Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (ctx) => CatBreedDetail(breed: item),
+                ),
+              );
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
