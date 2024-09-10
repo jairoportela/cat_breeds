@@ -1,3 +1,4 @@
+import 'package:cat_breeds/breeds/presentation/screens/cat_breeds_list_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,18 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      home: const CatBreedsListScreen(),
     );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(body: Text('Initial App'));
   }
 }
