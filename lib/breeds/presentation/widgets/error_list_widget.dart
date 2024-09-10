@@ -1,6 +1,4 @@
-import 'package:cat_breeds/breeds/providers/bloc/cat_breeds_overview_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ErrorListWidget extends StatelessWidget {
   const ErrorListWidget({
