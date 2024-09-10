@@ -19,12 +19,15 @@ class CatBreedDetail extends StatelessWidget {
               tag: breed.imageId!,
               child: Image.network(
                 breed.imageUrl!,
+                height: 300,
+                fit: BoxFit.cover,
               ),
             ),
           Expanded(
-              child: CatBreedDatailInfo(
-            breed: breed,
-          )),
+            child: CatBreedDetailInfo.fromBreed(
+              breed: breed,
+            ),
+          ),
         ],
       ),
     );
