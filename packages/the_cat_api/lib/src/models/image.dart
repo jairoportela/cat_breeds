@@ -5,8 +5,8 @@ part 'image.g.dart';
 /// Represents an image of a cat.
 ///
 /// This class is annotated with `@JsonSerializable()`, which allows it to be
-/// easily serialized to and deserialized from JSON using the `json_serializable`
-/// package.
+/// easily serialized to and deserialized from JSON
+/// using the `json_serializable` package.
 @JsonSerializable()
 class CatImage {
   /// Creates a [CatImage].

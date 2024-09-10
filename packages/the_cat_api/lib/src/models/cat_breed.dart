@@ -1,11 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:the_cat_api/src/models/models.dart';
 part 'cat_breed.g.dart';
 
 /// Represents a breed of cat.
 ///
 /// This class is annotated with `@JsonSerializable()`, enabling it to be
-/// easily serialized to and deserialized from JSON using the `json_serializable`
-/// package.
+/// easily serialized to and deserialized from JSON
+/// using the `json_serializable` package.
 
 @JsonSerializable()
 class CatBreed {
@@ -15,9 +16,6 @@ class CatBreed {
   const CatBreed({
     required this.id,
     required this.name,
-    required this.cfaUrl,
-    required this.vetstreetUrl,
-    required this.vcahospitalsUrl,
     required this.temperament,
     required this.origin,
     required this.countryCodes,
@@ -48,6 +46,7 @@ class CatBreed {
     required this.suppressedTail,
     required this.shortLegs,
     required this.hypoallergenic,
+    required this.image,
   });
 
   /// Creates a [CatBreed] from a JSON map.
@@ -64,15 +63,6 @@ class CatBreed {
   /// The name of the cat breed.
   final String name;
 
-  /// The URL to the Cat Fanciers' Association (CFA) page for this breed.
-  final String cfaUrl;
-
-  /// The URL to the Vetstreet page for this breed.
-  final String vetstreetUrl;
-
-  /// The URL to the VCA Hospitals page for this breed.
-  final String vcahospitalsUrl;
-
   /// A description of the breed's temperament.
   final String temperament;
 
@@ -80,86 +70,89 @@ class CatBreed {
   final String origin;
 
   /// A list of country codes where the breed is common.
-  final String countryCodes;
+  final String? countryCodes;
 
   /// The primary country code associated with the breed.
-  final String countryCode;
+  final String? countryCode;
 
   /// A general description of the breed.
   final String description;
 
   /// The typical lifespan of the breed in years.
-  final String lifeSpan;
+  final String? lifeSpan;
 
   /// Alternative names for the breed.
-  final String altNames;
+  final String? altNames;
 
   /// The URL to the Wikipedia page for this breed.
-  final String wikipediaUrl;
+  final String? wikipediaUrl;
 
   /// A rating (0-5) indicating the breed's suitability for indoor living.
-  final int indoor;
+  final int? indoor;
 
   /// A rating (0-5) indicating the breed's tendency to be a lap cat.
-  final int lap;
+  final int? lap;
 
   /// A rating (0-5) indicating the breed's adaptability to new environments.
-  final int adaptability;
+  final int? adaptability;
 
   /// A rating (0-5) indicating the breed's affection level.
-  final int affectionLevel;
+  final int? affectionLevel;
 
   /// A rating (0-5) indicating the breed's friendliness towards children.
-  final int childFriendly;
+  final int? childFriendly;
 
   /// A rating (0-5) indicating the breed's friendliness towards dogs.
-  final int dogFriendly;
+  final int? dogFriendly;
 
   /// A rating (0-5) indicating the breed's energy level.
-  final int energyLevel;
+  final int? energyLevel;
 
   /// A rating (0-5) indicating the breed's grooming needs.
-  final int grooming;
+  final int? grooming;
 
   /// A rating (0-5) indicating the breed's susceptibility to health issues.
-  final int healthIssues;
+  final int? healthIssues;
 
   /// A rating (0-5) indicating the breed's intelligence.
-  final int intelligence;
+  final int? intelligence;
 
   /// A rating (0-5) indicating the breed's shedding level.
-  final int sheddingLevel;
+  final int? sheddingLevel;
 
   /// A rating (0-5) indicating the breed's social needs.
-  final int socialNeeds;
+  final int? socialNeeds;
 
   /// A rating (0-5) indicating the breed's friendliness towards strangers.
-  final int strangerFriendly;
+  final int? strangerFriendly;
 
   /// A rating (0-5) indicating the breed's vocalization tendency.
-  final int vocalisation;
+  final int? vocalisation;
 
   /// Whether the breed is considered experimental (1 or 0).
-  final int experimental;
+  final int? experimental;
 
   /// Whether the breed is hairless (1 or 0).
-  final int hairless;
+  final int? hairless;
 
   /// Whether the breed is considered natural (1 or 0).
-  final int natural;
+  final int? natural;
 
   /// Whether the breed is considered rare (1 or 0).
-  final int rare;
+  final int? rare;
 
   /// Whether the breed has a rex coat type (1 or 0).
-  final int rex;
+  final int? rex;
 
   /// Whether the breed has a suppressed tail (1 or 0).
-  final int suppressedTail;
+  final int? suppressedTail;
 
   /// Whether the breed has short legs (1 or 0).
-  final int shortLegs;
+  final int? shortLegs;
 
   /// Whether the breed is considered hypoallergenic (1 or 0).
-  final int hypoallergenic;
+  final int? hypoallergenic;
+
+  ///Image of the cat breed
+  final CatImage? image;
 }
